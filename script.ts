@@ -74,6 +74,22 @@ function prepRequirements(inputs : HTMLInputElement[]) {
         liFuel.innerHTML = 'Fuel level high enough for launch.'
         liMass.innerHTML = 'Cargo mass low enough for launch.'
 
+        if (inputs.every((item) => item.value !== "")) {
+        } else {
+            h2Status.innerHTML = 'Shuttle not ready for launch!';
+            h2Status.style.color = 'red';
+        }
+    
+        if (typeof inputs[0].value !== "string" || typeof inputs[1].value !== "string") {
+            h2Status.innerHTML = 'Shuttle not ready for launch!';
+            h2Status.style.color = 'red';
+        }
+    
+        if (isNaN(Number(inputs[2].value)) || isNaN(Number(inputs[3].value))) {
+            h2Status.innerHTML = 'Shuttle not ready for launch!';
+            h2Status.style.color = 'red';
+        }
+
         if (Number(inputs[2].value) < 10000) {
             display.style.visibility = 'visible'
             h2Status.innerHTML = 'Shuttle not ready for launch!'
